@@ -1,14 +1,15 @@
 package com.company.labinterfaces;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Building {
     private String name;
     private List<Room> rooms;
 
-    public Building(String name)
-    {
-        name = name;
+    public Building(String name) {
+        this.name = name;
+        rooms = new ArrayList<>();
     }
 
     public String getName() {
@@ -24,12 +25,11 @@ public class Building {
             if (room.getName().equals(name)) return;
         }
 
-        Room newRoom = new Room(name, square, numOfWindows);
+        Room newRoom = new RoomImpl(name, square, numOfWindows);
         rooms.add(newRoom);
     }
 
-    public Room getRoom(String name)
-    {
+    public Room getRoom(String name) {
         for (Room room: rooms) {
             if (room.getName().equals(name)) return room;
         }
@@ -37,8 +37,10 @@ public class Building {
         return null;
     }
 
-    public void describe()
-    {
-
+    public void describe() {
+        System.out.println(name);
+        for (Room room : rooms) {
+            System.out.println(room.getInfo());
+        }
     }
 }

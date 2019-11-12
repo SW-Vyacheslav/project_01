@@ -26,4 +26,9 @@ public class Table implements Square, RoomObject {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public String getInfo() {
+        return String.format("%s (Square: %d)", name, square);
+    }
 }
